@@ -27,21 +27,28 @@ function tree(num: number): string {
       return "";
     } // Check number, The tree must more than 2
   
-    let tree = ""
+    let tree = "" // ต้นไม้ที่ยังไม่ถูกสร้าง
     for (let i = 1; i <= num; i++) {
         let row = "" 
-        // สร้างช่องว่าง
-        for (let j = 0; j <num - i; j++) {
+        // Loops เพื่อสร้างช่องว่างตามค่า num ที่มีและ -1 เพื่อเหลือพื้นที่ไว้แสดงใบ
+        for (let j = 0; j < num - i; j++) {
           row += " "
-        }
-        // สร้างใบไม้จากยอดสุด ลงล่างสุด
+        } 
+        // Loop เพื่อสร้างใบ(*)มีจำนวนตามรอบที่กำกลังทำอยู่(i) และเพิ่มขี้นไปเรื่อยจนหมด
         for (let j = 0; j < i; j++) {
-          row += "*"
+          row += "* "
         }
-        tree += row + "\n"
-      }
+
+        tree += row + "\n" // เป็นการรวมช่องว่าง(" ") กับใบใม้(*) ของแต่ละชั้น หรือแต่ละรอบของการ Loop
+      }  
+
+      // สร้างลำต้น
+      let row = ""
+      for (let i = 0; i < num-1; i++) {
+        row += " "
+      } tree += row
   
-    return tree
+    return tree + "*"
   }
   
-  console.log(tree(5))
+  console.log("The tree \n" + tree(4));
